@@ -1173,6 +1173,7 @@ dtb-$(CONFIG_ARCH_IMX8M) += \
 	imx8mp-libra-rdk-fpsc.dtb \
 	imx8mp-msc-sm2s.dtb \
 	imx8mp-phyboard-pollux-rdk.dtb \
+	imx8mp-mlpa.dtb \
 	imx8mp-venice.dtb \
 	imx8mp-venice-gw71xx-2x.dtb \
 	imx8mp-venice-gw72xx-2x.dtb \
@@ -1201,6 +1202,7 @@ dtb-$(CONFIG_ARCH_IMX9) += \
 	imx93-var-som-symphony.dtb \
 	imx93-phyboard-nash.dtb \
 	imx93-phyboard-segin.dtb \
+	imx93-mlpa.dtb \
 	imx95-libra-rdk-fpsc.dtb
 
 dtb-$(CONFIG_ARCH_IMXRT) += imxrt1050-evk.dtb \
