@@ -945,6 +945,16 @@ dtb-$(CONFIG_ARCH_IMX8M) += \
 	imx8mp-frdm.dtb \
 	imx8mp-icore-mx8mp-edimm2.2.dtb \
 	imx8mp-msc-sm2s.dtb \
+	imx8mp-phyboard-pollux-rdk.dtb \
+	imx8mp-mlpa.dtb \
+	imx8mp-venice.dtb \
+	imx8mp-venice-gw71xx-2x.dtb \
+	imx8mp-venice-gw72xx-2x.dtb \
+	imx8mp-venice-gw73xx-2x.dtb \
+	imx8mp-venice-gw74xx.dtb \
+	imx8mp-venice-gw7905-2x.dtb \
+	imx8mp-verdin-wifi-dev.dtb \
+	imx8mp-navqp.dtb \
 	imx8mq-pico-pi.dtb \
 	imx8mq-kontron-pitx-imx8m.dtb \
 	imx8mq-librem5-r4.dtb
@@ -958,10 +968,18 @@ dtb-$(CONFIG_ARCH_IMX9) += \
 	imx952-evk.dtb \
 	imx943-orangebox.dtb \
 	imx91-9x9-qsb.dtb \
-	imx91-11x11-frdm-imx91s.dtb \
-	imx93w-evk.dtb \
-	imx93w-frdm.dtb \
-	imx93-var-som-symphony.dtb
+	imx91-11x11-evk-spinand.dtb \
+	imx91-11x11-evk-tianma-wvga-panel.dtb \
+	imx93-11x11-evk.dtb \
+	imx93-11x11-evk-pmic-pf0900.dtb \
+	imx93-14x14-evk.dtb \
+	imx93-9x9-qsb.dtb \
+	imx93-9x9-qsb-tianma-wvga-panel.dtb \
+	imx93-var-som-symphony.dtb \
+	imx93-phyboard-nash.dtb \
+	imx93-phyboard-segin.dtb \
+	imx93-mlpa.dtb \
+	imx95-libra-rdk-fpsc.dtb
 
 dtb-$(CONFIG_ARCH_IMXRT) += imxrt1020-evk.dtb \
 	imxrt1170-evk.dtb \
