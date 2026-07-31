@@ -12,6 +12,26 @@
 		wdt = <&wdog1>;
 		bootph-pre-ram;
 	};
+
+	bootstd {
+		bootph-verify;
+		compatible = "u-boot,boot-std";
+
+		filename-prefixes = "/", "/boot/";
+		bootdev-order = "mmc2", "mmc1", "ethernet";
+
+		efi {
+			compatible = "u-boot,distro-efi";
+		};
+
+		rauc {
+			compatible = "u-boot,distro-rauc";
+		};
+
+		script {
+			compatible = "u-boot,script";
+		};
+	};
 };
 
 &reg_usdhc2_vmmc {
@@ -71,11 +91,7 @@
 };
 
 &usb_dwc3_0 {
-	compatible = "fsl,imx8mq-dwc3", "snps,dwc3";
-};
-
-&usb_dwc3_1 {
-	compatible = "fsl,imx8mq-dwc3", "snps,dwc3";
+	dr_mode = "peripheral";
 };
 
 &usdhc2 {
