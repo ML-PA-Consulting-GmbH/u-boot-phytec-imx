@@ -20,7 +20,7 @@
 	chosen {
 		stdout-path = &uart1;
 	};
-
+ 
 	backlight_lvds: backlight {
 		compatible = "pwm-backlight";
 		pinctrl-names = "default";
