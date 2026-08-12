@@ -103,3 +103,10 @@ int board_phys_sdram_size(phys_size_t *size)
 
 	return 0;
 }
+#if CONFIG_IS_ENABLED(CMD_BOOTA) || defined(CONFIG_ANDROID_BOOT_IMAGE)
+int mmc_map_to_kernel_blk(int dev_no)
+{
+	/* Das i.MX8MP Pollux Board nutzt ein 1:1 Mapping für eMMC und SD-Karte */
+	return dev_no;
+}
+#endif
