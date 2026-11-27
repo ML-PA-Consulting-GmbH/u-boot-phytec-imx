@@ -44,64 +44,6 @@
 		regulator-name = "VCC_SD";
 	};
 
-	reg_vcc_1v8_audio: regulator-vcc1v8-audio {
-		compatible = "regulator-fixed";
-		regulator-max-microvolt = <1800000>;
-		regulator-min-microvolt = <1800000>;
-		regulator-name = "VCC1V8_AUDIO";
-	};
-
-	reg_vcc_3v3: regulator-vcc-3v3 {
-		compatible = "regulator-fixed";
-		regulator-max-microvolt = <3300000>;
-		regulator-min-microvolt = <3300000>;
-		regulator-name = "VCC3V3";
-	};
-
-	sound: sound {
-		compatible = "simple-audio-card";
-		simple-audio-card,name = "phyBOARD-Segin-TLV320AIC3007";
-		simple-audio-card,format = "i2s";
-		simple-audio-card,bitclock-master = <&dailink_master>;
-		simple-audio-card,frame-master = <&dailink_master>;
-		simple-audio-card,widgets =
-			"Line", "Line In",
-			"Line", "Line Out",
-			"Speaker", "Speaker";
-		simple-audio-card,routing =
-			"Line Out", "LLOUT",
-			"Line Out", "RLOUT",
-			"Speaker", "SPOP",
-			"Speaker", "SPOM",
-			"LINE1L", "Line In",
-			"LINE1R", "Line In";
-
-		simple-audio-card,cpu {
-			sound-dai = <&sai1>;
-		};
-
-		dailink_master: simple-audio-card,codec {
-			sound-dai = <&tlv320>;
-			clocks = <&clk IMX93_CLK_SAI1>;
-		};
-	};
-};
-
-/* Audio */
-&sai1 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_sai1>;
-	clocks = <&clk IMX93_CLK_SAI1_IPG>, <&clk IMX93_CLK_DUMMY>,
-		<&clk IMX93_CLK_SAI1_GATE>,
-		<&clk IMX93_CLK_DUMMY>, <&clk IMX93_CLK_DUMMY>,
-		<&clk IMX93_CLK_AUDIO_PLL>;
-	clock-names = "bus", "mclk0", "mclk1", "mclk2", "mclk3", "pll8k";
-	assigned-clocks = <&clk IMX93_CLK_SAI1>;
-	assigned-clock-parents = <&clk IMX93_CLK_AUDIO_PLL>;
-	assigned-clock-rates = <19200000>;
-	fsl,sai-mclk-direction-output;
-	#sound-dai-cells = <0>;
-	status = "okay";
 };
 
 /* Power-key */
@@ -158,16 +100,6 @@
 	#address-cells = <1>;
 	#size-cells = <0>;
 	status = "okay";
-
-	tlv320: audio-codec@18 {
-		compatible = "ti,tlv320aic3007";
-		reg = <0x18>;
-		AVDD-supply = <&reg_vcc_3v3>;
-		IOVDD-supply = <&reg_vcc_3v3>;
-		DRVDD-supply = <&reg_vcc_3v3>;
-		DVDD-supply = <&reg_vcc_1v8_audio>;
-		#sound-dai-cells = <0>;
-	};
 
 	i2c_rtc: rtc@68 {
 		compatible = "microcrystal,rv4162";
@@ -256,16 +188,6 @@
 	pinctrl_tpm: tpmgrp {
 		fsl,pins = <
 			MX93_PAD_CCM_CLKO4__GPIO4_IO29		0x57e
-		>;
-	};
-
-	pinctrl_sai1: sai1grp {
-		fsl,pins = <
-			MX93_PAD_UART2_RXD__SAI1_MCLK				0x1202
-			MX93_PAD_SAI1_TXFS__SAI1_TX_SYNC			0x1202
-			MX93_PAD_SAI1_TXC__SAI1_TX_BCLK				0x1202
-			MX93_PAD_SAI1_TXD0__SAI1_TX_DATA00			0x1402
-			MX93_PAD_SAI1_RXD0__SAI1_RX_DATA00			0x1402
 		>;
 	};
 
@@ -365,4 +287,4 @@
 			MX93_PAD_ENET2_TD3__GPIO4_IO16		0x31e
 		>;
 	};
-}; 
+};
